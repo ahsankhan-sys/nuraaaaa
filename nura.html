@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>For Nura — How Much I Love You (Fixed)</title>
+<style>
+  :root{
+    --brown-900: #2f1b15;
+    --brown-800: #3e271f;
+    --brown-700: #4d352b;
+    --brown-600: #6b4b3f;
+    --brown-500: #8b6b5b;
+    --cream: #f7efe8;
+    --accent: #d96f54;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+    background:
+      radial-gradient(1000px 600px at 10% 10%, rgba(217,111,84,0.04), transparent 12%),
+      linear-gradient(180deg,var(--cream), #f5efe9 30%, var(--brown-900) 100%);
+    color:var(--brown-900);
+    padding:24px;
+  }
+
+  .card{
+    width:min(980px,96%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.72));
+    border-radius:18px;
+    box-shadow: 0 10px 30px rgba(47,27,21,0.25);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:0;
+  }
+
+  .left{
+    padding:34px;
+    background:
+      linear-gradient(180deg, rgba(139,107,91,0.04), transparent 30%),
+      repeating-linear-gradient(135deg, rgba(217,111,84,0.02) 0 6px, transparent 6px 12px);
+    position:relative;
+  }
+
+  h1{ margin:0 0 8px 0; font-size:28px; color:var(--brown-900); letter-spacing:0.6px; }
+  p.lead{ margin:0 0 18px 0; color:var(--brown-700); font-size:15px; }
+
+  .buttons{ display:flex; gap:12px; align-items:center; margin-top:18px; }
+  .btn{ background:var(--brown-700); color:var(--cream); border:none; padding:12px 16px; border-radius:10px; font-weight:600; cursor:pointer; box-shadow: 0 6px 14px rgba(47,27,21,0.12); transition: transform .12s ease, box-shadow .12s ease, background .12s ease; }
+  .btn:hover{ transform: translateY(-3px); box-shadow:0 12px 26px rgba(47,27,21,0.14) }
+  .btn.secondary{ background:transparent; color:var(--brown-800); border:1px solid rgba(79,53,46,0.12); font-weight:700; }
+
+  .big-btn{ background: linear-gradient(180deg,var(--accent), #c1573f); padding:16px 22px; font-size:18px; border-radius:14px; display:inline-flex; align-items:center; gap:12px; }
+  .big-btn .heart{ width:26px; height:26px; display:inline-block; transform:translateY(1px); }
+
+  .right{ padding:22px; background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45)); border-left: 1px solid rgba(79,53,46,0.04); display:flex; flex-direction:column; align-items:center; gap:12px; }
+
+  .meter{ width:100%; max-width:360px; background:linear-gradient(90deg, rgba(47,27,21,0.06), rgba(79,53,46,0.03)); border-radius:14px; padding:8px; }
+  .meter .bar{ height:28px; border-radius:10px; background:linear-gradient(90deg,#f9d5c8,#d96f54); width:0%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; transition: width 1.2s cubic-bezier(.22,.9,.33,1); box-shadow: 0 6px 16px rgba(217,111,84,0.12) inset; }
+
+  .message{ width:100%; max-width:420px; min-height:160px; border-radius:12px; background: rgba(75,50,44,0.04); padding:14px; border:1px dashed rgba(79,53,46,0.06); color:var(--brown-800); font-size:15px; position:relative; overflow:hidden; }
+  .message .typed{ font-size:15px; line-height:1.5; white-space:pre-wrap; min-height:120px; }
+
+  .hearts-canvas{ position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; }
+
+  .small-note{ font-size:13px; color:var(--brown-700); margin-top:6px }
+
+  @media (max-width:900px){ .card{ grid-template-columns:1fr; } .right{ order:-1 } }
+
+  .cursor-heart{ cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="%23d96f54" d="M12 21s-7.5-4.6-9-7.2C1.9 10.4 5.4 7 8.5 7 10 7 12 9 12 9s2-2 3.5-2c3.1 0 6.6 3.4 5.5 6.8C19.5 16.4 12 21 12 21z"/></svg>') 12 12, auto; }
+</style>
+</head>
+<body class="cursor-heart">
+
+<div class="card" role="main" aria-label="Love card for Nura">
+  <div class="left">
+    <h1>For Nura 💛</h1>
+    <p class="lead">Every day with you feels like a soft sunrise — steady, warm, and impossible to forget. Click the big button below to see just how much.</p>
+
+    <div class="buttons">
+      <button type="button" class="btn big-btn" id="loveBtn" aria-describedby="loveDesc">
+        <svg class="heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.5-4.6-9-7.2C1.9 10.4 5.4 7 8.5 7 10 7 12 9 12 9s2-2 3.5-2c3.1 0 6.6 3.4 5.5 6.8C19.5 16.4 12 21 12 21z" fill="#fff"/></svg>
+        How much I love you
+      </button>
+
+      <button type="button" class="btn secondary" id="surpriseBtn">Small surprise</button>
+      <div style="flex:1"></div>
+      <div id="loveDesc" class="small-note">Tip: Press the big button and wait for the little hearts ✨</div>
+    </div>
+
+    <div style="margin-top:22px; display:flex; gap:12px; align-items:center;">
+      <div style="width:78px; height:78px; border-radius:14px; background:linear-gradient(180deg,var(--brown-600),var(--brown-500)); display:flex; align-items:center; justify-content:center; color:var(--cream); font-weight:800; font-size:20px;">
+        N + A
+      </div>
+      <div><div style="font-weight:700; color:var(--brown-800)">Ahsan</div><div class="small-note">Made this just for you, Nura — open with love ❤️</div></div>
+    </div>
+
+    <!-- decorative hearts canvas (no fixed width/height attrs) -->
+    <canvas id="hearts" class="hearts-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <div class="right">
+    <div style="width:100%; display:flex; align-items:center; justify-content:center; gap:12px;">
+      <div style="text-align:center">
+        <div style="font-size:13px;color:var(--brown-700)">Love Meter</div>
+        <div class="meter" aria-hidden="true">
+          <div class="bar" id="meterBar">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message" id="messageBox" aria-live="polite" aria-atomic="true">
+      <div class="typed" id="typedText"></div>
+    </div>
+
+    <div style="width:100%; display:flex; gap:8px; justify-content:center;">
+      <button type="button" class="btn" id="replayBtn" disabled>Share the feeling</button>
+      <button type="button" class="btn secondary" id="copyBtn" title="Copy message to clipboard">Copy message</button>
+    </div>
+
+    <div style="font-size:12px;color:var(--brown-700); text-align:center; margin-top:6px">Brown theme · Animated · Clickable · Made with ❤️</div>
+  </div>
+</div>
+
+<script>
+/* -------------------------
+   Heart particles (robust)
+   ------------------------- */
+(function(){
+  const canvas = document.getElementById('hearts');
+  const ctx = canvas.getContext('2d');
+  const DPR = window.devicePixelRatio || 1;
+  let w=0, h=0;
+  let hearts = [];
+
+  function resizeCanvas() {
+    // compute client size from parent (.left)
+    const parentRect = canvas.parentElement.getBoundingClientRect();
+    const clientW = Math.max(200, parentRect.width);
+    const clientH = Math.max(200, parentRect.height);
+    canvas.style.width = clientW + 'px';
+    canvas.style.height = clientH + 'px';
+    canvas.width = Math.floor(clientW * DPR);
+    canvas.height = Math.floor(clientH * DPR);
+    // reset transform and scale properly once
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    w = clientW; h = clientH;
+    //console.log('canvas resized', w, h);
+  }
+
+  function Heart(x,y,dx,dy,size){
+    this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size; this.life = 0; this.maxLife = 80 + Math.random()*40;
+  }
+  Heart.prototype.update = function(){
+    this.x += this.dx;
+    this.y += this.dy;
+    this.dy += 0.06;
+    this.size *= 0.995;
+    this.life++;
+  };
+  Heart.prototype.draw = function(){
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.scale(this.size/18, this.size/18);
+    ctx.beginPath();
+    ctx.moveTo(0, -8);
+    ctx.bezierCurveTo(8,-28, 40,-28, 40,-4);
+    ctx.bezierCurveTo(40,18, 18,30, 0,44);
+    ctx.bezierCurveTo(-18,30, -40,18, -40,-4);
+    ctx.bezierCurveTo(-40,-28, -8,-28, 0,-8);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(217,111,84,${Math.max(0, 1 - this.life/this.maxLife)})`;
+    ctx.fill();
+    ctx.restore();
+  };
+
+  function spawnBurst(cx, cy, count=12){
+    for(let i=0;i<count;i++){
+      const ang = Math.random()*Math.PI*2;
+      const speed = 1 + Math.random()*3;
+      const dx = Math.cos(ang)*speed;
+      const dy = Math.sin(ang)*speed - 2;
+      const size = 10 + Math.random()*14;
+      hearts.push(new Heart(cx + (Math.random()*20-10), cy + (Math.random()*20-10), dx, dy, size));
+    }
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    for(let i = hearts.length-1; i>=0; i--){
+      const p = hearts[i];
+      p.update();
+      p.draw();
+      if(p.life > p.maxLife || p.size < 0.4) hearts.splice(i,1);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  // Safe external spawn function
+  window._spawnLove = function(targetEl){
+    try {
+      const canvasRect = canvas.getBoundingClientRect();
+      let cx = canvasRect.left + canvasRect.width/2;
+      let cy = canvasRect.top + canvasRect.height/2;
+      if(targetEl && targetEl.getBoundingClientRect){
+        const r = targetEl.getBoundingClientRect();
+        cx = (r.left + r.right)/2;
+        cy = (r.top + r.bottom)/2;
+      }
+      // convert to canvas-local coordinates
+      const localX = (cx - canvasRect.left);
+      const localY = (cy - canvasRect.top);
+      // if canvas has zero size fallback to center
+      const fx = isFinite(localX) ? localX : (w/2);
+      const fy = isFinite(localY) ? localY : (h/2);
+      // spawn a few bursts
+      for(let i=0;i<3;i++){
+        spawnBurst(fx + (Math.random()*40-20), fy + (Math.random()*40-20), 10 + Math.floor(Math.random()*8));
+      }
+    } catch (err) {
+      console.error('spawnLove error', err);
+      // fallback: spawn in center
+      spawnBurst(w/2, h/2, 10);
+    }
+  };
+
+  // init on load, not immediately, to avoid layout issues
+  window.addEventListener('load', function(){
+    resizeCanvas();
+    animate();
+  });
+  window.addEventListener('resize', function(){ resizeCanvas(); });
+})();
+
+/* -------------------------
+   Typing effect + meter
+   ------------------------- */
+const loveBtn = document.getElementById('loveBtn');
+const surpriseBtn = document.getElementById('surpriseBtn');
+const typedText = document.getElementById('typedText');
+const meterBar = document.getElementById('meterBar');
+const replayBtn = document.getElementById('replayBtn');
+const copyBtn = document.getElementById('copyBtn');
+
+const message = `My dearest Nura,
+
+If love was measured in everyday moments, I'd have built a universe by now.
+I love the way your laughter fills small spaces and the way your presence makes ordinary things feel like home.
+You're my calm when the world rushes, my sunlight when clouds gather, and the best decision my heart ever made.
+
+I love you more than words can carefully stack — more than distances, deadlines, or quiet evenings apart.
+I promise to keep choosing you, kindly, loudly, and always.
+
+Forever and always,
+Ahsan ❤`;
+
+let typingTimer = null;
+let paused = false;
+
+function typeMessage(text, speed=36){
+  typedText.textContent = '';
+  let i = 0;
+  replayBtn.disabled = true;
+  copyBtn.disabled = true;
+  function step(){
+    if(paused) return;
+    typedText.textContent = text.slice(0, i);
+    i++;
+    if(i <= text.length){
+      let s = speed;
+      if(text[i-1] === ',' || text[i-1] === '—') s += 80;
+      if(text[i-1] === '\n') s += 120;
+      typingTimer = setTimeout(step, s + Math.random()*18);
+    } else {
+      replayBtn.disabled = false;
+      copyBtn.disabled = false;
+    }
+  }
+  step();
+}
+
+function fillMeter(){ 
+  meterBar.style.width = '100%';
+  meterBar.textContent = '100%';
+  setTimeout(()=> {
+    meterBar.style.transform = 'scale(1.02)';
+    setTimeout(()=> meterBar.style.transform = 'scale(1)', 400);
+  }, 700);
+}
+
+loveBtn.addEventListener('click', (e)=>{
+  try {
+    console.log('loveBtn clicked');
+    window._spawnLove(loveBtn);
+  } catch(err) { console.error(err); }
+  // meter reset and animate
+  meterBar.style.transition = 'width 1.6s cubic-bezier(.22,.9,.33,1)';
+  meterBar.style.width = '0%';
+  meterBar.textContent = '0%';
+  setTimeout(()=> fillMeter(), 120);
+
+  // start typing after small delay
+  clearTimeout(typingTimer);
+  paused = false;
+  setTimeout(()=> typeMessage(message), 700);
+});
+
+surpriseBtn.addEventListener('click', ()=>{
+  try { window._spawnLove(surpriseBtn); } catch(e){ console.error(e); }
+  const short = "Sweet Nura — you are the quiet miracle of my days. 🌿";
+  typeMessage(short, 30);
+  meterBar.style.transition = 'width 700ms ease';
+  meterBar.style.width = '78%'; meterBar.textContent = '78%';
+  setTimeout(()=> meterBar.style.width = '0%', 1800);
+});
+
+replayBtn.addEventListener('click', ()=>{
+  try { window._spawnLove(replayBtn); } catch(e){ console.error(e); }
+  meterBar.style.transition = 'width 1.2s cubic-bezier(.22,.9,.33,1)';
+  meterBar.style.width = '100%'; meterBar.textContent = '100%';
+  typeMessage(message, 30);
+});
+
+copyBtn.addEventListener('click', async ()=>{
+  try{
+    await navigator.clipboard.writeText(message);
+    copyBtn.textContent = 'Copied!';
+    setTimeout(()=> copyBtn.textContent = 'Copy message', 1400);
+  }catch(e){
+    const ta = document.createElement('textarea');
+    ta.value = message;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    copyBtn.textContent = 'Copied!';
+    setTimeout(()=> copyBtn.textContent = 'Copy message', 1400);
+  }
+});
+
+// keyboard shortcut (L)
+document.addEventListener('keydown', (e)=>{
+  if(e.key.toLowerCase() === 'l' && !e.ctrlKey && !e.metaKey){
+    loveBtn.click();
+  }
+});
+</script>
+</body>
+</html>
